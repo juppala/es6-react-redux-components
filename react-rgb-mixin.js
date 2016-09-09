@@ -28,10 +28,23 @@ class ReactRBGMixin extends React.Component {
         <Slider ref="blue" updateSlider={(e) => this.updateState(e)} />
         <br />
         <div>Red: {this.state.red}, Green: {this.state.green}, Blue: {this.state.blue}</div>
+
+        <Child>This is Child Property Value with stateless componene Heart <Heart /> 
+         and this stateless component also passed to Child component props.</Child>
       </div>
     )
   }
 }
+
+class Child extends React.Component {
+  render() {
+    return (
+      <div>{this.props.children}</div>
+    )
+  }
+}
+
+const Heart = () => <span className="glyphicon glyphicon-heart"></span>
 
 class Slider extends React.Component {
   render() {

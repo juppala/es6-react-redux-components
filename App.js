@@ -2,6 +2,21 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {Alert, Button, ButtonToolbar} from 'react-bootstrap';
 
+import {Router, Route, Link, hashHistory} from 'react-router';
+
+const HomeRoute = () => <div><Links /><h1>Home</h1></div>
+const AboutRoute = () => <div><Links /><h1>About</h1></div>
+const ContactRoute = () => <div><Links /><h1>Contact</h1></div>
+const HelpRoute = () => <div><Links /><h1>Help</h1></div>
+
+const Links = () =>
+<nav>
+  <Link to="/">Home</Link><br />
+  <Link to="/about">About</Link><br />
+  <Link to="/contact">Contact</Link><br />
+  <Link to="/help">Help</Link><br />
+</nav>
+
 class App extends React.Component {
   constructor() {
     super();
@@ -18,6 +33,16 @@ class App extends React.Component {
     console.log('age. is required prop in App->', age);
     return (
       <div>
+          <div style={{margin:20}}>
+            <h1>Router loaded is: </h1>
+            <Router history={ hashHistory }>
+              <Route path={"/"} component={HomeRoute} />
+                <Route path={"/home"} component={HomeRoute} />
+                <Route path="/about" component={AboutRoute} />
+              <Route path="/contact" component={ContactRoute} />
+              <Route path="/help" component={HelpRoute} />
+            </Router>
+          </div>
         <Alert>Hello</Alert>
         <div  style={{margin: 20}}>
           <div>Default property: <b>{this.props.defaultGreet}</b></div> or
